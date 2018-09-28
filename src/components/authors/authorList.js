@@ -1,19 +1,8 @@
 "use strict";
 
 var React = require('react');
-var AuthorApi = require('../../api/authorApi');
 
-var Authors = React.createClass({
-    getInitailState: function(){
-        return {
-            authors: []
-        };
-    },
-
-    componentWillMount: function(){
-        this.setState({ author: AuthorApi.getAllAuthors() });
-    },
-
+var AuthorList = React.createClass({
     render: function(){
         var createAuthorRow = function(author){
             return (
@@ -33,7 +22,7 @@ var Authors = React.createClass({
                             <th>Name</th>
                         </thread>
                         <tbody>
-                            {this.state.authors.map(createAuthorRow, this)}
+                            {this.props.authors.map(createAuthorRow, this)}
                         </tbody>
                     </table>
             </div>
@@ -41,4 +30,4 @@ var Authors = React.createClass({
     }
 });
 
-module.exports = Authors;
+module.exports = AuthorList;
